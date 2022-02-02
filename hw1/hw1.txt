@@ -1,0 +1,79 @@
+George Owen
+405196467
+hw1.txt
+
+
+-----------------------
+Problem 1: SEQ
+-----------------------
+
+Output for first 11 values of N:
+    N=0: 1
+    N=1: 1
+    N=2: 1
+    N=3: 3
+    N=4: 5
+    N=5: 9
+    N=6: 17
+    N=7: 31
+    N=8: 57
+    N=9: 105
+    N=10: 193
+additionally, I wrote the test-SEQ function to test SEQ on the first "times" values. This is contained within hw1.lsp as per the instructions.
+for larger values of n:
+    (SEQ 20) -> 85525
+    (SEQ 25) -> 1800281 (took about 5s)
+    (SEQ 30) -> 37895489 (took a few minutes)
+    (SEQ 50) -> computation ran for 10min until I ran out of patience
+For computing SEQ on larger values of n, the computation time rises exponentially. This is because SEQ contains three recursive function calls. 
+Each time we increase n by 1, the computation time will increase by a factor of three. For this reason, the SEQ function may not be feasible for practical use.
+Also, the numbers get bigger when n gets bigger.
+
+
+
+
+-----------------------
+Problem 2: SUMS
+-----------------------
+
+Output for first 11 values of N:
+    N=0: 0
+    N=1: 0
+    N=2: 0
+    N=3: 2
+    N=4: 4
+    N=5: 8
+    N=6: 16
+    N=7: 30
+    N=8: 56
+    N=9: 104
+    N=10: 192
+
+
+
+
+-----------------------
+Problem 3: 
+-----------------------
+
+Output for the given test cases:
+    (write (ANON `42))
+        > 0
+
+    (write (ANON `FOO))
+        > 0
+
+    (write (ANON `(((L E) F) T)))
+        > (((0 0) 0) 0)
+
+    (write (ANON `(5 FOO 3.1 -0.2)))
+        > (0 0 0 0)
+
+    (write (ANON `(1 (FOO 3.1) -0.2)))
+        > (0 (0 0) 0)
+
+    (write (ANON `(((1 2) (FOO 3.1)) (BAR -0.2))))
+        > (((0 0) (0 0)) (0 0))
+
+    (write (ANON `(R (I (G (H T))))))
+        > (0 (0 (0 (0 0))))

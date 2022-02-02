@@ -1,0 +1,140 @@
+GEORGE OWEN
+405196467
+For CS161 at UCLA
+
+
+-------------------------------------------------------------------
+                    GRAPH 1
+-------------------------------------------------------------------
+
+-----------------
+GRAPH 1 WITH K=3:
+-----------------
+
+D:\CS\cs161\hw4>rsat_2.01_win.exe graph1-3.txt -s
+c Rsat version 2.01
+c
+c
+s UNSATISFIABLE
+c CNF stats: (21 vars, 64 clauses)
+c Decisions: 12
+c Conflicts: 10
+c Running time: 0.00400 seconds
+
+Graph 1 is NOT SATISFIABLE with 3 colors!!
+
+
+-----------------
+GRAPH 1 WITH K=4: 
+-----------------
+
+D:\CS\cs161\hw4>rsat_2.01_win.exe graph1-4.txt -s
+c Rsat version 2.01
+v -1 -28 -27 -26 25 -5 -9 -21 -24 -23 22 -14 -2 -18 -20 -19 17 -13 -16 15 -11 -12 10 -6 -8 7 -3 4 0
+c
+c
+s SATISFIABLE
+c CNF stats: (28 vars, 97 clauses)
+c Decisions: 11
+c Conflicts: 0
+c Running time: 0.00500 seconds
+
+Graph 1 IS SATISFIABLE with 4 colors!!
+
+
+-----------------------------------------------
+What do these results tell us about this graph? 
+-----------------------------------------------
+These results show that it is not possible to 3-color the graph, but it is possible to 4-color it.
+This means the corresponding graph color problem has a lower bound of 4 colors.
+
+Additionally, since it is possible to 4-color the graph, that implies the graph network can represent a corresponding map
+-- like a 2d physical map -- since every map is 4-colorable.
+
+
+------------------
+Interpreting the Solution with k=4:
+------------------
+
+
+Examine only positive variable indexes, as they tell us what variable assignments will be
+with 7 nodes, 4 variables
+
+node: variable index
+7: 25 
+6: 22 
+5: 17 
+4: 15 
+3: 10 
+2: 7 
+1: 4 
+Since variable indexes give us information on the encoding of the color, 
+we can decode these indices to discover color assignments using the (n-1)*k+c formula
+
+(n-1)*k + c = variable index
+k=4, n=current node index
+colors: {1 2 3 4}
+nodes: {1 2 3 4 5 6 7}
+
+1: (1-1)*4 + c = 4 ==> c=4
+2: (2-1)*4 + c = 7 ==> c=3
+3: (3-1)*4 + c = 10 ==> c=2
+4: (4-1)*4 + c = 15 ==> c=3
+5: (5-1)*4 + c = 17 ==> c=1
+6: (6-1)*4 + c = 22 ==> c=2
+7: (7-1)*4 + c = 25 ==> c=1
+
+--------
+SOLUTION
+--------
+This gives us a solution to 4-color the graph:
+node: color
+1: 4
+2: 3
+3: 2
+4: 3
+5: 1
+6: 2
+7: 1
+
+
+-------------------------------------------------------------------
+                    GRAPH 2
+-------------------------------------------------------------------
+
+The minimum amount of colors to properly color this graph is 8! EIGHT!
+This tells us that this graph does not have a corresponding map - not the kind we think of when we think of physical 2d geographic maps.
+
+GRAPH 2 WITH K=4:
+see this doesn't work
+
+D:\CS\cs161\hw4>rsat_2.01_win.exe graph2-4.txt -s
+c Rsat version 2.01
+c
+c
+s UNSATISFIABLE
+c CNF stats: (200 vars, 2570 clauses)
+c Decisions: 39
+c Conflicts: 32
+c Running time: 0.00300 seconds
+
+but this does work!
+    ||
+    ||
+    ||
+   \  /
+    \/
+GRAPH 2 WITH K=8:
+
+D:\CS\cs161\hw4>rsat_2.01_win.exe graph2-8.txt -s
+c Rsat version 2.01
+v -51 -49 -50 -52 -53 -211 -209 -210 -212 -213 -214 -235 -233 -234 -107 -106 -105 -258 -257 -299 -297 -108 -236 -300 -131 -129 -305 -132 -260 -54 -239 -192 -191 -160 -109 -190 -294 110 -398 -390 -374 -366 -358 -326 -310 -286 -262 -182 -158 -126 -94 -62 -46 -22 -111 -112 -308 -237 238 -134 -382 -350 -334 -318 -302 -278 -270 -246 -230 -198 -150 -102 -86 -78 -70 -38 -14 -240 -283 -281 -282 -243 -241 -242 -67 -65 -244 -309 -68 -291 -290 -289 -186 -185 -188 -133 -154 298 -378 -362 -322 -306 -266 -250 -202 -194 -138 -130 -122 -98 -90 -66 -42 -34 -26 -18 -301 -303 -304 -159 -361 -364 -365 363 -387 -379 -371 -355 -347 -323 -315 -275 -267 -227 -195 -155 -99 -83 -75 -59 -35 -367 -368 153 -385 -377 -369 -353 -329 -313 -249 -225 -193 -137 -97 -1 -156 -157 -388 -389 -245 69 -397 -357 -325 -285 -269 -261 -205 -197 -173 -141 -125 -101 -61 -45 -37 -21 -5 -71 -72 -187 189 -333 -181 -165 284 -380 -348 -332 -268 -252 -204 -180 -164 -148 -140 -124 -92 -84 -76 -60 -4 -287 -288 381 -349 -317 -229 -29 -383 -384 -56 55 -391 -375 -359 -319 -295 -279 -271 -247 -231 -215 -199 -143 -135 -63 -23 216 -392 -376 -360 -336 -328 -296 -272 -264 -256 -208 -168 -152 -144 -128 -96 -64 -8 386 -394 -370 -354 -330 -162 -58 356 -372 -324 57 248 -352 -280 -104 -80 -40 -32 373 -277 -77 136 -73 -41 -17 -9 -400 -312 -176 -48 265 -81 -43 -259 263 -399 -327 -311 -255 -223 -207 -175 -167 -127 -119 -95 -47 321 -393 -337 -89 307 -395 -251 -203 -171 -163 -139 -123 -91 -19 121 142 -217 -169 -145 -113 -254 -222 -206 -174 -118 -6 253 -221 -149 -117 -85 44 -340 -292 -276 -220 -116 -100 -36 -28 -20 -12 103 74 293 -346 -314 -274 -226 -218 -178 -114 -82 -10 -79 273 -177 -161 93 -351 -343 -151 -87 -39 -31 -7 88 -344 -224 -184 -120 219 -339 -179 -147 -27 -11 -3 166 -342 201 33 345 146 24 -338 -170 -16 172 -196 200 115 183 -335 -15 331 13 396 341 2 -30 25 -320 316 -232 228 0
+c
+c
+s SATISFIABLE
+c CNF stats: (400 vars, 5890 clauses)
+c Decisions: 941
+c Conflicts: 557
+c Running time: 0.03900 seconds
+
+I tried to interpret the solution for this as well but it honestly wasted a lot of time and I did it wrong. Luckily, it's not required haha.
